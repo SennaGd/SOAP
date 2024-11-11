@@ -1,2 +1,1 @@
-Soap Info
-![Repository Thumbnail](soap-thumbnail.png)
+![Repository Thumbnail](Soap thumbnail.png)
