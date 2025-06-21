@@ -1,5 +1,5 @@
 # Soap Info
-__ Senna's Optimization Automated Program __
+## Senna's Optimization Automated Program
 
 __SOAP__ is an optimization/automation program, that helps people optimize their Windows systems on first install. 
 This program will allow you to debloat your windows as an example: Disabling Copilot, removing unnecessary apps that the user does not use.
