@@ -21,7 +21,7 @@ async function greet() {
     <RouterLink to="/tweaks">tweak page</RouterLink>
   </nav>
   
-    <button action="greet">ssssss</button>
+    <button @click="greet">ssssss</button>
     <main class="container">
     <RouterView />
   </main>
