@@ -6,16 +6,17 @@ import os, json, re
 # (1). Read File (open file)
 # (2). Split contents (only needed info)
 # (3). Split the split contents (Hive, Path, etc.) 
-#* ^^^ -> Reading Data
+#* ^^^ -> Reading Data ( DONE )
 
 # (1). Traverse folders
-# (2). Find File -------------------|
-# (3). Save FileName                |
-# (4). Search FilePath of the File--|
+# (2). Find File ---------------------|
+# (3). Save FileName                  \
+# (4). Find Other filename for revert | ---> But when is it revert? :c
+# (5). Search FilePath of the File----\
 #* ^^^ -> Getting path & name
 
 # (1). Write the split data into tweaks.json file
-#* ^^^ -> Writing Data
+#* ^^^ -> Writing Data : ( DONE )
 
 tweakPath = "./directx-test-tweak.bat"
 tweakPath2 = "testfile.bat"
