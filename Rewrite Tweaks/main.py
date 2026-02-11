@@ -1,20 +1,21 @@
 import os, json, re
 
 
+#! How to know when a tweak is apply or revert??????????????????????????????????????????????
+
 # (1). Read File (open file)
 # (2). Split contents (only needed info)
 # (3). Split the split contents (Hive, Path, etc.) 
-#? ^^^ -> Reading Data
+#* ^^^ -> Reading Data
 
 # (1). Traverse folders
 # (2). Find File -------------------|
 # (3). Save FileName                |
 # (4). Search FilePath of the File--|
-#? ^^^ -> Getting path & name
+#* ^^^ -> Getting path & name
 
 # (1). Write the split data into tweaks.json file
-#? ^^^ -> Writing Data
-
+#* ^^^ -> Writing Data
 
 tweakPath = "./testfile.bat"
 
