@@ -29,10 +29,8 @@ function getValue(event: Event) {
   if (isChecked) {
         console.log("Input is checked");
         name.value = "hi";
-        applys();
   } else {
         name.value = "hi";
-        revert();
         console.log("Input is NOT checked");
   }
 }
