@@ -4,26 +4,54 @@ import { invoke } from "@tauri-apps/api/core";
 const greetMsg = ref("");
 const name = ref("");
 
+const hive = ref("");
+const path = ref("");
+const tweak_name = ref("");
+const tweak_value = ref<string | number>("");
+
 async function greet() {
   // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
   greetMsg.value = await invoke("greet", { name: name.value });
-};
+}
 
+async function manage_registry() {
+  // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
+    greetMsg.value = await invoke("manage_registry", {  hive: hive.value, 
+                                                        path: path.value,
+                                                        name: tweak_name.value,
+                                                        value: tweak_value.value
+                                                    });
+}  
 
+function getValue(event: Event) {
+  const isChecked = (event.target as HTMLInputElement).checked;
 
-
+  if (isChecked) {
+        console.log("Input is checked");
+        name.value = "hi";
+        applys();
+  } else {
+        name.value = "hi";
+        revert();
+        console.log("Input is NOT checked");
+  }
+}
 </script>
 
 <template>
-  
+  <link ref="stylesheet" />
   <nav>
     <RouterLink to="/">home page</RouterLink>
     <RouterLink to="/tweaks">tweak page</RouterLink>
   </nav>
-  
-    <button @click="greet">ssssss</button>
-    <main class="container">
+
+  <!-- <button @click="greet"">ssssss</button> -->
+  <main class="container">
     <RouterView />
+
+    <label>
+      <input @change="getValue" id="myCheckBox" type="checkbox" />
+    </label>
   </main>
 </template>
 
@@ -35,7 +63,6 @@ async function greet() {
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #249b73);
 }
-
 </style>
 <style>
 :root {
@@ -147,5 +174,4 @@ button {
     background-color: #0f0f0f69;
   }
 }
-
 </style>

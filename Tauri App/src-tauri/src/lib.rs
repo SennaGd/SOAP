@@ -39,19 +39,30 @@ fn delete_value(_tweak_hive: &str, _key_path: &str, data_name: &str) -> io::Resu
 }
 
 #[tauri::command]
-fn greet(name: &str) -> String {
+fn applys() -> String {
     let i = 1u32;
                          // HIVE                 PATH                                 NAME            VALUE
     let _ = create_value("HKEY_LOCAL_MACHINE","SYSTEM\\RegTest\\TestCreatingValue", "testdata_var", i);
 
-    format!("Hello, {}! You've been greeted from Rust!", name)
+    format!("Hello! You've been greeted from Rust!")
+}
+
+#[tauri::command]
+fn manage_registry(hive: &str, path: &str, name: &str value: T, regfunction: bool) -> String {
+    let i = 1u32;
+                         // HIVE                 PATH                                 NAME            VALUE
+    let _ = delete_value("HKEY_LOCAL_MACHINE","SYSTEM\\RegTest\\TestCreatingValue", "testdata_var");
+
+    format!("Hello! You've been greeted from Rust!")
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![greet])
+
+        .invoke_handler(tauri::generate_handler![manage_registry])
+
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
