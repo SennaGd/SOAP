@@ -17,8 +17,8 @@ import os, json, re
 # (1). Write the split data into tweaks.json file
 #* ^^^ -> Writing Data
 
-tweakPath = "./testfile.bat"
-
+tweakPath = "./directx-test-tweak.bat"
+tweakPath2 = "testfile.bat"
 pattern = re.compile(
     r'^reg(?:\.exe)?\s+(add|delete)\s+"((HKLM|HKCU|HKCR|HKU|HKCC|'
     r'HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER|HKEY_CLASSES_ROOT|'
@@ -45,7 +45,6 @@ for line in content:
         path = regexSearch.group(4)
         name = regexSearch.group(5)
         value = regexSearch.group(6)
-        path = path.replace("\\", "\\\\")
         # print("\nfunction: ", function)
         # print("hive: ", hive)
         # print("path: ", path)
@@ -64,3 +63,14 @@ for x in tweak:
     for y in tweak[x]:
         print(y)
         
+with open("tweaks.json", 'r') as f:
+    try:
+        data = json.load(f)
+    except json.JSONDecodeError:
+        data = {}
+        
+data.update(tweak)
+
+with open ("tweaks.json", 'w') as f:
+    json.dump(data, f, indent=4)
+    
