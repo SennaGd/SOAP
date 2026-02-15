@@ -30,7 +30,7 @@ pattern = re.compile(
     r'(?:\s+/f)?$',
     re.IGNORECASE
 )
-i = 0
+
 with open(tweakPath, "r") as file:
     name = file.name.split('./')[-1]
     content = file.readlines()
@@ -46,11 +46,12 @@ for line in content:
         path = regexSearch.group(4)
         name = regexSearch.group(5)
         value = regexSearch.group(6)
-        # print("\nfunction: ", function)
-        # print("hive: ", hive)
-        # print("path: ", path)
-        # print("name: ", name)
-        # print("value ", value)
+        
+        print("\nfunction: ", function)
+        print("hive: ", hive)
+        print("path: ", path)
+        print("name: ", name)
+        print("value ", value)
         
         tweak[list(tweak)[0]].append({
             'function':function,
@@ -59,10 +60,6 @@ for line in content:
             'name':name,
             'value':value
         })
-        
-for x in tweak:
-    for y in tweak[x]:
-        print(y)
         
 with open("tweaks.json", 'r') as f:
     try:
