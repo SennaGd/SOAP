@@ -13,7 +13,7 @@ import os, json, re
 # (3). Save FileName                  \
 # (4). Find Other filename for revert | ---> But when is it revert? :c
 # (5). Search FilePath of the File----\
-#* ^^^ -> Getting path & name
+#* ^^^ -> Getting path & name ( DONE )
 
 # (1). Write the split data into tweaks.json file
 #* ^^^ -> Writing Data : ( DONE )
