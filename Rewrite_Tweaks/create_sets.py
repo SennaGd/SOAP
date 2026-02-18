@@ -1,6 +1,6 @@
 import os
 from find_tweak_folder import getTweakFolders
-
+import pathlib
 
 def getTweakSets(folderList: list) -> list:
     revertMap = [
@@ -24,7 +24,7 @@ def getTweakSets(folderList: list) -> list:
                 if revert in file:
                     file = file.split()
                     revertFiles.append(file)
-
+                    
             index += 1
 
         index = 0
@@ -37,7 +37,6 @@ def getTweakSets(folderList: list) -> list:
                 index += 1
 
         applyFiles = filesArray
-
         filesArray = []
         for revertFile in revertFiles:
             rFile = revertFile[0]
@@ -57,9 +56,10 @@ def getTweakSets(folderList: list) -> list:
 
             for aFile in applyFiles:
                 if reverFile in aFile:
+                    
                     filesArray.append(
+                        
                         {"apply": aFile, "revert": revertFile[0]})
-
         if filesArray != []:
             tweaks.append({folder: filesArray})
         else:
@@ -68,8 +68,5 @@ def getTweakSets(folderList: list) -> list:
     return tweaks
 
 
-tweakFolders = getTweakFolders("Tweak Files")
+tweakFolders = getTweakFolders("Tweak_Files\\Main_Tweaks")
 tweaks = getTweakSets(tweakFolders)
-
-for x in tweaks:
-    print(x)
