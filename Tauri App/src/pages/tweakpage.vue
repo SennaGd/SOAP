@@ -13,7 +13,21 @@ import { TweaksResponse } from "../components/dataclasses/tweakdataclasses"
         <p>Name: {{ tweak.name }}</p>
         <p>Description: {{ tweak.description }}</p>
     </div> -->
+    <div class="grid grid-cols-3 gap-4">
+        <div class="col-start-1">
+            <h1>Tweak</h1>
+        </div>
 
+        <div class="col-start-3">
+            <p>Description</p>
+        </div>
 
+        <div class="col-start-2">
+            <button></button>
+        </div>
+    </div>
+    <!-- <label>
+      <input @change="getValue" id="myCheckBox" type="checkbox" />
+    </label> -->
 
 </template>

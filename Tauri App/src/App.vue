@@ -36,20 +36,24 @@ function getValue(event: Event) {
 }
 </script>
 
-<template>
-  <link ref="stylesheet" />
-  <nav>
-    <RouterLink to="/">home page</RouterLink>
-    <RouterLink to="/tweaks">tweak page</RouterLink>
-  </nav>
+<template class="flex flex-row">
+
 
   <!-- <button @click="greet"">ssssss</button> -->
-  <main class="container">
-    <RouterView />
+  <main class="flex h-dvh">
+    <nav class="bg-gray-950 flex flex-col gap-2 max-w-40 pl-5 pr-5 pt-5">
+      <div class="w-20">Logo</div>
+      <RouterLink class='w-40' to="/"><button>home page</button></RouterLink>
+      <RouterLink class='w-40' to="/tweaks"><button>tweak page</button></RouterLink>
+    </nav>
+    
+    <div id="pagecontainer" class="flex flex-col align-center">
+      <RouterView />
+    </div>
 
-    <label>
+    <!-- <label>
       <input @change="getValue" id="myCheckBox" type="checkbox" />
-    </label>
+    </label> -->
   </main>
 </template>
 
