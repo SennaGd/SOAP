@@ -41,10 +41,10 @@ function getValue(event: Event) {
 
   <!-- <button @click="greet"">ssssss</button> -->
   <main class="flex h-dvh">
-    <nav class="bg-gray-950 flex flex-col gap-2 max-w-40 pl-5 pr-5 pt-5">
-      <div class="w-20">Logo</div>
-      <RouterLink class='w-40' to="/"><button>home page</button></RouterLink>
-      <RouterLink class='w-40' to="/tweaks"><button>tweak page</button></RouterLink>
+    <nav class="nav-panel flex flex-col gap-2 max-w-40 p-3">
+      <div class="nav-element nav-logo">Logo</div>
+      <RouterLink class='nav-element nav-button' to="/"><button>homepage</button></RouterLink>
+      <RouterLink class='nav-element nav-button' to="/tweaks"><button>tweaks</button></RouterLink>
     </nav>
     
     <div id="pagecontainer" class="flex flex-col align-center">
