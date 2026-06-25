@@ -2,8 +2,6 @@
 import {} from "../App.vue"
 </script>
 
-<template>
-	<div>
+<template class=''>
 
-	</div>
 </template>

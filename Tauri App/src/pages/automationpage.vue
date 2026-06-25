@@ -2,8 +2,5 @@
 import {} from "../App.vue"
 </script>
 
-<template>
-	<div>
-
-	</div>
+<template class='home-page-container'>
 </template>
