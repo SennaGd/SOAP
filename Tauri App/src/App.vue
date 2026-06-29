@@ -46,7 +46,7 @@ function getValue(event: Event) {
 	<nav class="sidebar ">
 		<div class='nav-title'>
 			SOAP
-			<img class='collapse-icon' srcset='./icons/home.svg'/>
+			<img class='collapse-icon' srcset='./icons/sidebar-close.svg'/>
 		</div>
 
 		<div class="nav-line"><hr/></div>

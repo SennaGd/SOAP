@@ -15,13 +15,13 @@
 .sidebar {
 	background-color:var(--bg-sidebar); 
 
-	flex: 0 0 17.5rem;
+	flex: 0 0 15rem;
+	height: 100vh;
+
 	display: flex;
 
 	flex-direction: column;
 
-	width: 17.5rem;
-	height: 100vh;
 }
 
 .sidebar> *:last-child {

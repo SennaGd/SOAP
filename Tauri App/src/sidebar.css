@@ -27,6 +27,7 @@
 
 }
 .nav-button {
+	transition: 0.2s;
 	background-color: var(--bg-sidebar-button);
 	border-radius: 8px;
 
@@ -45,13 +46,6 @@
 	background-color: var(--bg-sidebar-button-hover);
 }
 
-/* button text 
-.nav-text {
-	color: var(--sidebar-text);
-	font-size:1.125rem;
-	margin-top: auto;
-	margin-bottom: auto;
-}
 
 /* line seperator */
 .nav-line {
@@ -74,6 +68,7 @@
 .router-link-exact-active img {
 	filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(180deg) brightness(113%) contrast(101%);
 } 
+
 /* Sidebar icon */
 .nav-icon {
 	max-height: 16px;
@@ -82,4 +77,3 @@
 	margin-bottom: auto;
 	filter: invert(80%) sepia(19%) saturate(22%) hue-rotate(316deg) brightness(91%) contrast(95%);
 }
-

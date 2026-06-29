@@ -1,12 +1,12 @@
 :root {
-	--bg-base: hsl(0, 0%, 10%); /* Same as Sidebar*/
+	--bg-base: hsl(0, 0%, 8%); /* Same as Sidebar*/
 	--bg-page: hsl(0, 0%, 5%); /* Main Page */
 	--bg-page-border: hsl(0, 0%, 25%);
 
-	--bg-sidebar: hsl(0, 0%, 10%);
-	--bg-sidebar-button: hsl(0, 0%, 15%);	
-	--bg-sidebar-button-active: hsl(304 80.4% 43.6%);
-	--bg-sidebar-button-hover: hsl(0, 0%, 20%);
+	--bg-sidebar: hsl(0, 0%, 8%);
+	--bg-sidebar-button: hsl(0, 0%, 10%);	
+	--bg-sidebar-button-active: hsl(0, 0%, 18%);
+	--bg-sidebar-button-hover: hsl(0, 0%, 15%);
 	--border: hsl(0, 0%, 30%);
 
 	--text-title: hsl(0, 0%, 95%);
@@ -19,3 +19,4 @@
 	color: var(--text-mashed);
 
 }
+*::selection { background: transparent; } 
