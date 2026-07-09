@@ -54,23 +54,23 @@ def get_file_contents(filepath: str):
         raise e
 
 
-def parse_tweak_contents(filepath: str, tweakContents):
+def parse_tweak_contents(filepath: str, tweakcontents):
     if ".reg" in filepath:
         print('reg')
         pattern = re.compile(
-            r'\[(HKEY_[A-Z_]+)\\([^\]]+)\][\s\S]*?"([^"]+)"=(dword|hex|hex\(2\)):(\w+)',
-            re.IGNORECASE
+            r'\[(hkey_[a-z_]+)\\([^\]]+)\][\s\s]*?"([^"]+)"=(dword|hex|hex\(2\)):(\w+)',
+            re.ignorecase
         )
         name = get_tweak_name(filepath)
         tweak = {name: []}
-        regexSearch = re.search(pattern, tweakContents)
-        if regexSearch:
+        regexsearch = re.search(pattern, tweakcontents)
+        if regexsearch:
             tweak[list(tweak)[0]].append({
                 "function": "add",
-                "hive": regexSearch.group(1),
-                "path": regexSearch.group(2),
-                "name": regexSearch.group(3),
-                "value": regexSearch.group(5)
+                "hive": regexsearch.group(1),
+                "path": regexsearch.group(2),
+                "name": regexsearch.group(3),
+                "value": regexsearch.group(5)
             })
         else:
             print("not found")
@@ -79,70 +79,70 @@ def parse_tweak_contents(filepath: str, tweakContents):
         pattern = re.compile(
             r'^reg(?:\.exe)?\s+'
             r'(add|delete)\s+'
-            r'"(HKLM|HKCU|HKCR|HKU|HKCC|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER|HKEY_CLASSES_ROOT|HKEY_USERS|HKEY_CURRENT_CONFIG)\\([^"]+)"'
+            r'"(hklm|hkcu|hkcr|hku|hkcc|hkey_local_machine|hkey_current_user|hkey_classes_root|hkey_users|hkey_current_config)\\([^"]+)"'
             r'(?:\s+/v\s+"?([^"\s]+)"?)?'
-            r'(?:\s+/t\s+(REG_\w+))?'
+            r'(?:\s+/t\s+(reg_\w+))?'
             r'(?:\s+/d\s+(?:"([^"]+)"|([^\s/]+)))?'
             r'(?:\s+/f)?\s*$',
-            re.IGNORECASE
+            re.ignorecase
         )
         name = get_tweak_name(filepath)
         tweak = {name: []}
 
-        for line in tweakContents:
-            regexSearch = re.match(pattern, line)
+        for line in tweakcontents:
+            regexsearch = re.match(pattern, line)
 
-            if regexSearch:
+            if regexsearch:
                 tweak[list(tweak)[0]].append({
-                    'function': regexSearch.group(1),
-                    'hive': regexSearch.group(2),
-                    'path': regexSearch.group(3),
-                    'name': regexSearch.group(4),
-                    'value': regexSearch.group(6) or regexSearch.group(7)
+                    'function': regexsearch.group(1),
+                    'hive': regexsearch.group(2),
+                    'path': regexsearch.group(3),
+                    'name': regexsearch.group(4),
+                    'value': regexsearch.group(6) or regexsearch.group(7)
                 })
 
     return tweak
 
 
-def write_tweak(parsedTweakData):
+def write_tweak(parsedtweakdata):
     with open("tweaks.json", 'r') as f:
         try:
             data = json.load(f)
-        except json.JSONDecodeError:
+        except json.jsondecodeerror:
             data = {}
 
-    data = [parsedTweakData]
+    data = [parsedtweakdata]
 
-    # print("Data:", data)
-    # print(parsedTweakData)
+    # print("data:", data)
+    # print(parsedtweakdata)
 
     with open("tweaks.json", 'w') as f:
         json.dump(data, f, indent=4)
 
 
-tweakArray = []
-def parse_tweaks(tweaksArray):
-    for tweak in tweaksArray:
+tweakarray = []
+def parse_tweaks(tweaksarray):
+    for tweak in tweaksarray:
         path = next(iter(tweak.keys()))
         tweak = next(iter(tweak.values()))[0]
-        applyTweak = tweak['apply']
-        revertTweak = tweak['revert']
+        applytweak = tweak['apply']
+        reverttweak = tweak['revert']
 
-        applyTweakpath = os.path.join(path, applyTweak)
-        revertTweakpath = os.path.join(path, revertTweak)
+        applytweakpath = os.path.join(path, applytweak)
+        reverttweakpath = os.path.join(path, reverttweak)
 
-        name = get_tweak_name(applyTweakpath)
+        name = get_tweak_name(applytweakpath)
 
 
-        applyContents = get_file_contents(applyTweakpath)
-        revertContents = get_file_contents(revertTweakpath)
+        applycontents = get_file_contents(applytweakpath)
+        revertcontents = get_file_contents(reverttweakpath)
 
-        parsedApplyTweak = parse_tweak_contents(applyTweakpath, applyContents)
-        parsedRevertTweak = parse_tweak_contents(revertTweakpath, revertContents)
+        parsedapplytweak = parse_tweak_contents(applytweakpath, applycontents)
+        parsedreverttweak = parse_tweak_contents(reverttweakpath, revertcontents)
 
-        print('parsed cotentsn::', parsedApplyTweak)
+        print('parsed cotentsn::', parsedapplytweak)
         
-        tweakArray.append({name: {"apply":[parsedApplyTweak], "revert": [ parsedRevertTweak]}})
+        tweakarray.append({name: {"apply":[parsedapplytweak], "revert": [ parsedreverttweak]}})
 
 
 parse_tweaks(tweaks)
