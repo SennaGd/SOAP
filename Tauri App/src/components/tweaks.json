@@ -1,0 +1,79 @@
+{
+    "Distribute Timers": {
+		"name":"Distribute Timers",
+        "description": "Changes priorization of the process timers.",
+        "category": "kernel",
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "DistributeTimers",
+                "value": "00000001"
+            }
+        ],
+        "revert": [
+            {
+                "function": "delete",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "DistributeTimers",
+                "value": null
+            }
+        ]
+    },
+    "MouseDataQueueSize": {
+		"name":"MouseDataQueueSize",
+        "description": "Changes priorization of the process timers.",
+        "description": "Reducing the mouse events buffered by the mouse driver, resulting in lower latency.",
+        "category": "input",
+        "apply": [
+			{
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\services\\mouclass\\Parameters",
+                "name": "MouseDataQueueSize1",
+                "value": "00000014"
+            },
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\services\\mouclass\\Parameters",
+                "name": "MouseDataQueueSize2",
+                "value": "00000014"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\services\\mouclass\\Parameters",
+                "name": "MouseDataQueueSize",
+                "value": "00000064"
+            }
+        ]
+    },
+    "KeyboardDataQueueSize": {
+		"name":"KeyboardDataQueueSize",
+        "description": "reducing the keyboard events buffered by the keyboard driver, resulting in reducing latency.",
+        "category": "input",
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\ControlSet001\\Services\\kbdclass\\Parameters",
+                "name": "KeyboardDataQueueSize",
+                "value": "00000014"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\ControlSet001\\Services\\kbdclass\\Parameters",
+                "name": "KeyboardDataQueueSize",
+                "value": "00000064"
+            }
+        ]
+    }
+}

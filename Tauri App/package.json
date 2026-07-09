@@ -14,6 +14,7 @@
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
     "cors": "^2.8.6",
+    "json": "^11.0.0",
     "vue": "^3.5.13",
     "vue-router": "^5.0.2"
   },
@@ -27,5 +28,9 @@
     "typescript": "~5.6.2",
     "vite": "^6.0.3",
     "vue-tsc": "^2.1.10"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "json@11.0.0": true
   }
 }

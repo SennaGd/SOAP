@@ -1,49 +1,54 @@
 <script setup lang="ts">
 import {} from "../App.vue"
 import { TweaksResponse } from "../components/dataclasses/tweakdataclasses"
-
-
-// const tweaksArray:TweaksResponse = tweaks;
+import HeaderFrame from "../components/ui/HeaderFrame.vue"
+import CategoryContainer from "../components/ui/CategoryContainer.vue"
+import CategoryBox from "../components/ui/TweakCategory.vue"
 </script>
 
-<template >
-    <h1>TweaksPage</h1>
-        
-    <!-- <div class='background-color:#0a0a0a;'v-for="tweak in tweaksArray">
-        <p>Name: {{ tweak.name }}</p>
-        <p>Description: {{ tweak.description }}</p>
-		</div> -->
-	<div class="tweak-page-container">
-		<div class="tweak-element ">
+<template>
+	<HeaderFrame>
+		<h1>Tweaks</h1>
+		<p>Select a category to start optimizing.</p>
+	</HeaderFrame>
 
-			<div class="tweak-element-title col-start-1">
-				<h1>Tweak</h1>
-			</div>
+	<CategoryContainer>
+		<CategoryBox 
+			title='Input Devices' 
+			description='Contains tweaks for decreasing the latency between your input devices.'
+			to="/tweaks/inputs"
+			/>
+			
+		<CategoryBox 
+			title='Kernel' 
+			description='Here you will find tweaks for optimizing the Windows kernel which has a bad prioritization on handling different processes.'
+			to="/tweaks/kernel"
+			/>
+		<CategoryBox 
+			title='GPU' 
+			description='Here you will find various optimizations for reducing gpu usage on unnecessary gpu usage.'
+			to="/tweaks/gpu"
+			/>
+		<CategoryBox 
+			title='CPU' 
+			description='Contains tweaks reducing unnecessary cpu usage and optimizes the cpu’s scheduler to be the most performant. '
+			to="/tweaks/cpu"
+			/>
+		<CategoryBox 
+			title='Audio' 
+			description='Subtle tweaks reducing latency in audio devices.'
+			to="/tweaks/audio"
+			/>
+		<CategoryBox 
+			title='Network' 
+			description='This page contains tweaks for decreasing the latency between your input devices.'
+			to="/tweaks/network"
+			/>
 
-			<div class="tweak-element-description row-start-2">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum nulla at nunc maximus, non consectetur lacus feugiat. Vivamus porttitor porta nibh,sit . </p>
-			</div>
 
-			<div class="tweak-element-button row-start-2 col-start-2">
-				<button>enable</button>
-			</div>
-		</div>
-		<div class="tweak-element ">
-			<div class="tweak-element-title col-start-1">
-				<h1>Tweak</h1>
-			</div>
 
-			<div class="tweak-element-description row-start-2">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum nulla at nunc maximus, non consectetur lacus feugiat. Vivamus porttitor porta nibh,sit . </p>
-			</div>
 
-			<div class="tweak-element-button row-start-2 col-start-2">
-				<button>enable</button>
-			</div>
-		</div>
-	</div>
-    <!-- <label>
-      <input @change="getValue" id="myCheckBox" type="checkbox" />
-    </label> -->
 
+
+	</CategoryContainer>
 </template>

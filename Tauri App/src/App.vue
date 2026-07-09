@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { invoke } from "@tauri-apps/api/core";
+import Sidebar from "./components/objects/sidebar/Sidebar.vue"
 const greetMsg = ref("");
 const name = ref("");
 
@@ -41,60 +42,8 @@ function getValue(event: Event) {
 
   <!-- Main Page Container -->
   <main class="base">
-	
-	<!-- Sidebar Panel -->
-	<nav class="sidebar ">
-		<div class='nav-title'>
-			SOAP
-			<img class='collapse-icon' srcset='./icons/sidebar-close.svg'/>
-		</div>
+	<Sidebar navTitle='SOAP'/>	
 
-		<div class="nav-line"><hr/></div>
-		
-		<div class='nav-button-group'>
-			<RouterLink class='nav-button' to='/'> 
-				<img class='nav-icon' srcset='./icons/home.svg'/>
-				<div class='nav-text'>Home</div>
-			</RouterLink>	
-		
-			<RouterLink class='nav-button' to='/tweaks'> 
-				<img class='nav-icon' srcset='./icons/list.svg'/>
-				<div class='nav-text'>Tweaks</div>
-			</RouterLink>	
-			
-			<RouterLink class='nav-button' to='/apps'> 
-				<img class='nav-icon' srcset='./icons/box.svg'/>
-				<div class='nav-text'>Applications</div>
-			</RouterLink>	
-		</div>
-
-		<div class='nav-line'><hr/></div>
-
-		<div class='nav-button-group'>
-			<RouterLink class='nav-button' to='/automation'> 
-				<img class='nav-icon' srcset='./icons/save.svg'/>
-				<div class='nav-text'>Automation</div>
-			</RouterLink>	
-
-		</div>
-		
-
-		<!-- Bottom buttons-->
-			<div class='nav-button-group'>
-				<RouterLink class='nav-button' to='/privacy'> 
-					<img class='nav-icon' srcset='./icons/lock.svg'/>
-					<div class='nav-text'>Privacy</div>
-				</RouterLink>	
-
-				<RouterLink class='nav-button' to='/settings'> 
-					<img class='nav-icon' srcset='./icons/settings.svg'/>
-					<div class='nav-text'>Settings</div>
-				</RouterLink>	
-
-			</div>
-
-	</nav>
-	 
     <div class="contents">
       <RouterView class=''/>
     </div>

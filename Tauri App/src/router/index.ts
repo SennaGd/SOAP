@@ -1,15 +1,32 @@
 import { createRouter, createWebHashHistory } from "vue-router"
+import { 
+	HomeView, 
+	TweaksView, 
+	PrivacyView, 
+	AppView, 
+	SettingsView, 
+	AutomationView,
 
-import HomeView from "../pages/homepage.vue"
-import TweaksView from "../pages/tweakpage.vue"
-import PrivacyView from "../pages/privacypage.vue"
-import AppView from "../pages/applicationpage.vue"
-import SettingsView from "../pages/settingspage.vue"
-import AutomationView from "../pages/automationpage.vue"
+	InputTweaks,
+	KernelTweaks,
+	CPUTweaks,
+	GPUTweaks,
+	NetworkTweaks,
+	AudioTweaks
+
+} from "../pages"
 
 const routes = [
  { path: "/", component: HomeView },
  { path: "/tweaks", component: TweaksView },
+
+ { path: "/tweaks/inputs", component: InputTweaks},
+ { path: "/tweaks/gpu", component: GPUTweaks},
+ { path: "/tweaks/cpu", component: CPUTweaks},
+ { path: "/tweaks/kernel", component: KernelTweaks},
+ { path: "/tweaks/network", component: NetworkTweaks},
+ { path: "/tweaks/audio", component: AudioTweaks},
+ 
  { path: "/privacy", component: PrivacyView },
  { path: "/apps", component: AppView },
  { path: "/settings", component: SettingsView},

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "./palette.css";
 @import "./sidebar.css";
-
+@import "./sliderbutton.css";
 .base {
 	background-color: var(--bg-base);
 
@@ -30,12 +30,133 @@
 }
 
 .contents {
+	padding: 40px;
 	background-color: var(--bg-page);
 	display: block;
 	flex: 1;
 	
-	border: 1px solid var(--bg-page-border);
+	border: 1px solid var(--border);
 	border-radius: 32px;
 	margin: 1.25rem 1.25rem 1.25rem 0; 
+
+	overflow: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none; 
 }
 
+.contents::-webkit-scrollbar{
+	width:0px;
+	height: 0px;
+}
+
+
+
+.box-container {
+	display: flex;
+	gap:50px;
+}
+
+.box {
+	background-color: var(--bg-box);
+	border: 1px solid var(--border);
+
+	border-radius: 16px;
+	margin-top: 20px;	
+}
+
+.big-box{
+	width: 850px;
+	height: 250px;
+}
+
+.small-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	width: 400px;
+	height: 250px;
+}
+
+.sm-title {
+	color: var(--sm-title);
+
+	font-size: 2.25rem;
+	font-weight: 550;
+}
+
+.sm-sub-title {
+	color: var(--sm-sub);
+
+	margin-top: 40px;
+	font-size: 1.25rem; 
+}
+
+.sm-button {
+	background-color: var(--bg-sm-button);
+	border: 1px solid var(--border-sm-button);
+
+	width: 160px;
+	height: 60px;
+	border-radius: 8px;
+
+	display: flex;
+	font-size: 3rem;
+
+	padding-bottom:15px;
+
+	margin-top: auto;
+	margin-bottom: 30px;
+
+}
+
+.sm-button * {
+	margin:auto;
+
+}
+
+.sm-button:hover {
+	background-color: var(--bg-sm-button-hover);
+}
+
+.tweak-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.tweak-panel {
+	display: flex;
+	background-color: var(--bg-box);
+	width: 850px;	
+	height: 120px;
+	border-radius: 16px;
+	border: 1px solid var(--border);
+}
+
+.panel-container {
+	padding: 16px;	
+	width: 80%;
+}
+
+.panel-container h2 {
+	color: var(--sm-title);
+	font-size: 2rem;
+	font-weight: bold;
+	padding-bottom: 0.5rem;
+}
+
+.panel-container p {
+	color: var(--text-mashed);
+
+}
+
+.button-container {
+	margin-left: auto;
+	margin-top: auto;
+	padding-right: 1rem;
+	padding-bottom: 1rem;
+}
