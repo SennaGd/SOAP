@@ -1,10 +1,10 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-//use std::io;
-//use std::path::Path;
-// use winreg::{RegKey, enums::*, HKEY};
+use std::io;
+use std::path::Path;
+ use winreg::{RegKey, enums::*, HKEY};
 
 
-/*
+
 fn get_winreg_hive(tweak_hive: &str) -> HKEY {
     match tweak_hive {
          "HKLM" | "HKEY_LOCAL_MACHINE" => HKEY_LOCAL_MACHINE,
@@ -47,15 +47,17 @@ fn applys() -> String {
     format!("Hello! You've been greeted from Rust!")
 }
 
+
 #[tauri::command]
-fn manage_registry(hive: &str, path: &str, name: &str value: T, regfunction: bool) -> String {
+fn manage_registry(hive: &str, path: &str, name: &str, value: &str, _regfunction: bool) -> String {
     let i = 1u32;
                          // HIVE                 PATH                                 NAME            VALUE
-    let _ = delete_value("HKEY_LOCAL_MACHINE","SYSTEM\\RegTest\\TestCreatingValue", "testdata_var");
+    //let _ = delete_value("HKEY_LOCAL_MACHINE","SYSTEM\\RegTest\\TestCreatingValue", "testdata_var");
+    let _ = create_value(hive, path, name, value);
 
     format!("Hello! You've been greeted from Rust!")
 }
-*/
+
 
 #[tauri::command]
 fn hello(title: &str) {
@@ -67,8 +69,7 @@ pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
 
-		.invoke_handler(tauri::generate_handler![hello])
-//        .invoke_handler(tauri::generate_handler![manage_registry])
+        .invoke_handler(tauri::generate_handler![manage_registry])
 
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

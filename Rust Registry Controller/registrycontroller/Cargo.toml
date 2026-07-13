@@ -1,0 +1,12 @@
+[package]
+name = "registrycontroller"
+version = "0.1.0"
+edition = "2024"
+
+[jobs.run]
+command = ["cargo", "run", "--color", "always"]
+need_stdout = true
+allow_warnings = true
+
+[dependencies]
+winreg = "0.56"

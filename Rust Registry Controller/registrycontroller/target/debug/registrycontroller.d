@@ -1,0 +1,1 @@
+C:\Users\senna\Documents\Soap\Rust\ Registry\ Controller\registrycontroller\target\debug\registrycontroller.exe: C:\Users\senna\Documents\Soap\Rust\ Registry\ Controller\registrycontroller\src\main.rs

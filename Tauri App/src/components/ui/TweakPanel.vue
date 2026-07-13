@@ -34,7 +34,13 @@ function applyTweaks() {
 function revertTweaks() {
 	for (var x = 0; x < tweakObj[0].tweak.revert.length; x++) {
 		var current_tweak = tweakObj[0].tweak.revert[x] // x of many apply tweaks
-		invoke("hello", {title: current_tweak.name})
+		invoke("manage_registry", {
+			hive: current_tweak.hive, 
+			path: current_tweak.path,
+			name: current_tweak.name,
+			value: current_tweak.value,
+			regfunction: current_tweak.function
+		})
 	}
 }
 

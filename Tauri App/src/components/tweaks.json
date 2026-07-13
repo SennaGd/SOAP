@@ -24,7 +24,6 @@
     },
     "MouseDataQueueSize": {
 		"name":"MouseDataQueueSize",
-        "description": "Changes priorization of the process timers.",
         "description": "Reducing the mouse events buffered by the mouse driver, resulting in lower latency.",
         "category": "input",
         "apply": [

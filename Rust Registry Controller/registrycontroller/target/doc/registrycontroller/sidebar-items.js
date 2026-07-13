@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["RegistryValue"],"fn":["differentiate_key_types","get_type","main"],"struct":["Tweak"]};
