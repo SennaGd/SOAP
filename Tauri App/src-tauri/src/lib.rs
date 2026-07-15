@@ -13,6 +13,7 @@ enum RegistryValue<'a> {
     Null(&'a str),
 }
 
+#[derive(Debug)]
 enum TweakValue<'a> {
    Str(&'a str),
    Int(u32),
@@ -20,8 +21,8 @@ enum TweakValue<'a> {
 
 #[tauri::command]
 fn key_handler(function: &str, hive: &str, path: &str, key_name: &str, key_value: &str) -> Result<(), String> {
-    let (_key, parsed_tweak) = differentiate_key_types(&key_value);
     let mut parsed_hive: &RegKey = HKLM;
+    // Parse hive
     match hive {
         "HKEY_LOCAL_MACHINE"   => {parsed_hive = HKLM;},
         "HKEY_CURRENT_USER"    => {parsed_hive = HKCU;},
@@ -31,51 +32,66 @@ fn key_handler(function: &str, hive: &str, path: &str, key_name: &str, key_value
 
     dbg!(&hive);
 
+    // Open or Create Key
     let parsed_path = Path::new(&path);
-    let (key, disp) = &parsed_hive.create_subkey(&parsed_path).map_err(|e| e.to_string())?;
+    let (key, disp) = &parsed_hive
+                        .create_subkey(&parsed_path)
+                        .map_err(|e| e.to_string())?;
+
     match disp {
        REG_CREATED_NEW_KEY => println!("A new key created."),
        REG_OPENED_EXISTING_KEY => println!("Existing key was opened."),
     }
 
     // Parsing key_value to either be an i32/&str
-    
-    key.set_value(&key_name, &key_value).unwrap();
+    // -- init TweakValue
+    let mut value: TweakValue;
+    value = TweakValue::Str("_");
+    value = TweakValue::Int(0);
+
+    // -- "differentiate_key_types" -> enum: RegistryValue.
+    let (_key, parsed_tweak) = differentiate_key_types(&key_value);
+    match parsed_tweak{
+        RegistryValue::Dword(num) => {
+            value = TweakValue::Int(num);
+        },
+        RegistryValue::Sz(num) => {
+            value = TweakValue::Str(num);
+        },
+        RegistryValue::Null(num) => {
+            value = TweakValue::Str(num);
+        }
+    }
+    println!("{:?}", &value);
+    // Setting key's value 
+    match value {
+        TweakValue::Int(num) => {
+            if function == "add" {
+                println!("Creating new DWORD: {}", &key_name);
+                key.set_value(&key_name, &num).unwrap();
+            } else { 
+                key.delete_value(&key_name)
+                   .map_err(|e| e.to_string())?; 
+            }
+        },
+        TweakValue::Str(num) => {
+            if function == "add" {
+                key.set_value(&key_name, &num).unwrap();
+            } else { 
+                key.delete_value(&key_name)
+                   .map_err(|e| e.to_string())?; 
+            }
+        }
+    }
     Ok(())
 }
 //    // -- init value
 //
 //
 //    // -- fetch type of tweak value
-//    match parsed_tweak{
-//        RegistryValue::Dword(num) => {
-//            value = TweakValue::Int(num);
-//        },
-//        RegistryValue::Sz(num) => {
-//            value = TweakValue::Str(num);
-//        },
-//        RegistryValue::Null(num) => {
-//            value = TweakValue::Str(num);
-//        }
-//    }
+    
 //
-//    match value {
-//        TweakValue::Int(num) => {
-//            if function == "add" {
-//                println!("Creating new DWORD: {}", &key_name);
-//                key.set_value(&key_name, &num).unwrap();
-//            } else { 
-//                key.delete_value(&key_name)?; 
-//            }
-//        },
-//        TweakValue::Str(num) => {
-//            if function == "add" {
-//                key.set_value(&key_name, &num).unwrap();
-//            } else { 
-//                key.delete_value(&key_name)?; 
-//            }
-//        }
-//    }
+    
 //
 //    Ok(())
 
