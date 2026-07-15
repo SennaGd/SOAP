@@ -54,6 +54,7 @@
 .box-container {
 	display: flex;
 	gap:50px;
+	width: 850px;
 }
 
 .box {
@@ -131,7 +132,8 @@
 .tweak-panel {
 	display: flex;
 	background-color: var(--bg-box);
-	width: 850px;	
+	/* width:850px;  */
+	width: 500px;
 	height: 120px;
 	border-radius: 16px;
 	border: 1px solid var(--border);
@@ -151,10 +153,10 @@
 
 .panel-container p {
 	color: var(--text-mashed);
-
 }
 
 .button-container {
+	width: 10%;
 	margin-left: auto;
 	margin-top: auto;
 	padding-right: 1rem;

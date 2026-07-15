@@ -31,16 +31,10 @@
                 "function": "add",
                 "hive": "HKEY_LOCAL_MACHINE",
                 "path": "SYSTEM\\CurrentControlSet\\services\\mouclass\\Parameters",
-                "name": "MouseDataQueueSize1",
-                "value": "00000014"
-            },
-            {
-                "function": "add",
-                "hive": "HKEY_LOCAL_MACHINE",
-                "path": "SYSTEM\\CurrentControlSet\\services\\mouclass\\Parameters",
-                "name": "MouseDataQueueSize2",
+                "name": "MouseDataQueueSize",
                 "value": "00000014"
             }
+            
         ],
         "revert": [
             {
