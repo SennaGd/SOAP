@@ -1,5 +1,6 @@
 <script setup>
 import { invoke } from "@tauri-apps/api/core";
+import { state } from 'vue'
 import { ref, toRefs, computed } from 'vue'
 
 const isEnabled = ref(false)

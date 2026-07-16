@@ -85,18 +85,6 @@ fn key_handler(function: &str, hive: &str, path: &str, key_name: &str, key_value
     }
     Ok(())
 }
-//    // -- init value
-//
-//
-//    // -- fetch type of tweak value
-    
-//
-    
-//
-//    Ok(())
-
-
-
 
 
 fn differentiate_key_types(key_value: &str) -> (&'static str, RegistryValue) {
@@ -153,11 +141,6 @@ fn get_dword_value(int_key_value: &i32) -> u32 {
     println!("{}", total);
     let total_u32: u32 = total as u32;
     return total_u32;
-}
-
-#[tauri::command]
-fn hello(title: &str) {
-	println!("Hello {}", title);
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]

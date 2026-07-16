@@ -107,7 +107,7 @@ fn differentiate_key_types(key_value: &String) -> (&'static str, RegistryValue) 
             let num = get_dword_value(&number);
            ( "REG_DWORD", RegistryValue::Dword(num))
         },
-        Err(_) => {
+        Err(_) => {ё
             if (key_value.to_lowercase() == "null") {
                 ( "Err", RegistryValue::Null(key_value.clone())) 
             } 
