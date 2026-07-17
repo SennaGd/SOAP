@@ -1,6 +1,5 @@
 <script setup>
 import { invoke } from "@tauri-apps/api/core";
-import { state } from 'vue'
 import { ref, toRefs, computed } from 'vue'
 
 const isEnabled = ref(false)
@@ -26,21 +25,13 @@ const tweakObj = Object.values(tweak)
 function applyTweaks() {
 	for (var x = 0; x < tweakObj[0].tweak.apply.length; x++) {
 		var current_tweak= tweakObj[0].tweak.apply[x] // x of many apply tweaks
-		//invoke("key_handler", {
-			//function: current_tweak.function,
-			//hive: current_tweak.hive, 
-			//path: current_tweak.path,
-			//key_name: current_tweak.name,
-			//key_value: current_tweak.value
-
-		//})
-		invoke("key_handler", {
-			function: current_tweak.function,
-			hive: current_tweak.hive,
-			path: current_tweak.path,
-			keyName: current_tweak.name,
-			keyValue: current_tweak.value
-		})
+//		invoke("key_handler", {
+//			function: current_tweak.function,
+//			hive: current_tweak.hive,
+//			path: current_tweak.path,
+//			keyName: current_tweak.name,
+//			keyValue: current_tweak.value
+//		})
 
 		console.log(current_tweak)
 	}
@@ -50,20 +41,13 @@ function applyTweaks() {
 function revertTweaks() {
 	for (var x = 0; x < tweakObj[0].tweak.revert.length; x++) {
 		var current_tweak = tweakObj[0].tweak.revert[x] // x of many apply tweaks
-		// invoke("key_handler", {
-		// 	function: current_tweak.function,
-		// 	hive: current_tweak.hive, 
-		// 	path: current_tweak.path,
-		// 	key_name: current_tweak.name,
-		// 	key_value: current_tweak.value
-		// })
-		invoke("key_handler", {
-			function: current_tweak.function,
-			hive: current_tweak.hive,
-			path: current_tweak.path,
-			keyName: current_tweak.name,
-			keyValue: current_tweak.value
-		})
+//		invoke("key_handler", {
+//			function: current_tweak.function,
+//			hive: current_tweak.hive,
+//			path: current_tweak.path,
+//			keyName: current_tweak.name,
+//			keyValue: current_tweak.value
+//		})
 
 
 		console.log(current_tweak);
