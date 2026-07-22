@@ -1,8 +1,9 @@
 {
     "Distribute Timers": {
-		"name":"Distribute Timers",
+        "name": "Distribute Timers",
         "description": "Changes priorization of the process timers.",
         "category": "kernel",
+        "toggled": 0,
         "apply": [
             {
                 "function": "add",
@@ -22,40 +23,41 @@
             }
         ]
     },
-    "MouseDataQueueSize": {
-		"name":"MouseDataQueueSize",
-        "description": "Reducing the mouse events buffered by the mouse driver, resulting in lower latency.",
+	"KeyboardDataQueueSize": {
+		"name": "KeyboardDataQueueSize",
+        "description": "reducing the keyboard events buffered by the keyboard driver, resulting in reducing latency.",
         "category": "input",
+        "toggled": 1,
         "apply": [
-			{
+            {
                 "function": "add",
                 "hive": "HKEY_LOCAL_MACHINE",
-                "path": "SYSTEM\\CurrentControlSet\\services\\mouclass\\Parameters",
-                "name": "MouseDataQueueSize",
+                "path": "SYSTEM\\ControlSet001\\Services\\kbdclass\\Parameters",
+                "name": "KeyboardDataQueueSize",
                 "value": "00000014"
             }
-            
         ],
         "revert": [
             {
                 "function": "add",
                 "hive": "HKEY_LOCAL_MACHINE",
-                "path": "SYSTEM\\CurrentControlSet\\services\\mouclass\\Parameters",
-                "name": "MouseDataQueueSize",
+                "path": "SYSTEM\\ControlSet001\\Services\\kbdclass\\Parameters",
+                "name": "KeyboardDataQueueSize",
                 "value": "00000064"
             }
         ]
     },
-    "KeyboardDataQueueSize": {
-		"name":"KeyboardDataQueueSize",
-        "description": "reducing the keyboard events buffered by the keyboard driver, resulting in reducing latency.",
+    "MouseDataQueueSize": {
+        "name": "MouseDataQueueSize",
+        "description": "Reducing mouse events buffered by the mouse it's driver, resulting in reduced latency.",
         "category": "input",
+        "toggled": 0,
         "apply": [
             {
                 "function": "add",
                 "hive": "HKEY_LOCAL_MACHINE",
-                "path": "SYSTEM\\ControlSet001\\Services\\kbdclass\\Parameters",
-                "name": "KeyboardDataQueueSize",
+                "path": "SYSTEM\\CurrentControlSet\\services\\mouclass\\Parameters",
+                "name": "MouseDataQueueSize",
                 "value": "00000014"
             }
         ],
@@ -63,8 +65,8 @@
             {
                 "function": "add",
                 "hive": "HKEY_LOCAL_MACHINE",
-                "path": "SYSTEM\\ControlSet001\\Services\\kbdclass\\Parameters",
-                "name": "KeyboardDataQueueSize",
+                "path": "SYSTEM\\CurrentControlSet\\services\\mouclass\\Parameters",
+                "name": "MouseDataQueueSize",
                 "value": "00000064"
             }
         ]

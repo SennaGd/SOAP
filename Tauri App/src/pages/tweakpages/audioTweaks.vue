@@ -1,7 +1,20 @@
 <script setup lang="ts">
-import {} from "../App.vue"
+import data from "../../components/tweaks.json"
+import sortTweaksOnCategory from "../../components/fetchTweaks.ts"
+import TweakPanel from "../../components/ui/TweakPanel.vue"
+
+const sortedTweaks = sortTweaksOnCategory(data, "audio")
 </script>
 
 <template class=''>
-
+	<div class='tweak-container'>
+		
+		<div v-for="tweak in sortedTweaks">
+			<TweakPanel 
+				:title=tweak.name 
+				:description=tweak.description 
+				:tweak=tweak
+			/>
+		</div>
+	</div>
 </template>
