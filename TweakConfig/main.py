@@ -162,7 +162,7 @@ class MainWindow(QMainWindow):
 		if self.filepath is not None:
 			with open(self.filepath, "r") as f:
 				file = json.load(f)
-			file[self.title.text()] = {"title":self.title.text(), "description":self.description.text(), "category": self.category.text(),"apply": applyTweak, "revert": revertTweak}
+			file[self.title.text()] = {"name":self.title.text(), "description":self.description.text(), "category": self.category.text(), "toggled":0,"apply": applyTweak, "revert": revertTweak}
 			print(file)
 			formatted = json.dumps(file, indent=4)
 
