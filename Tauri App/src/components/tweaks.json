@@ -23,8 +23,8 @@
             }
         ]
     },
-	"KeyboardDataQueueSize": {
-		"name": "KeyboardDataQueueSize",
+    "KeyboardDataQueueSize": {
+        "name": "KeyboardDataQueueSize",
         "description": "reducing the keyboard events buffered by the keyboard driver, resulting in reducing latency.",
         "category": "input",
         "toggled": 1,
@@ -68,6 +68,887 @@
                 "path": "SYSTEM\\CurrentControlSet\\services\\mouclass\\Parameters",
                 "name": "MouseDataQueueSize",
                 "value": "00000064"
+            }
+        ]
+    },
+    "Threaded DPC": {
+        "name": "Threaded DPC",
+        "description": "Reduces the general DPC latency increasing system responsiveness by forcing all DPC's to run asynchronously.",
+        "category": "kernel",
+        "toggled": 0,
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "ThreadDpcEnable",
+                "value": "00000000"
+            }
+        ],
+        "revert": [
+            {
+                "function": "delete",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "ThreadDpcEnable",
+                "value": null
+            }
+        ]
+    },
+    "System Responsiveness": {
+        "name": "System Responsiveness",
+        "description": "Reduces the amound of cpu usage reserved for background tasks, resulting in less interrupts and smoother frametimes.",
+        "category": "kernel",
+        "toggled": 0,
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+                "name": "SystemResponsiveness",
+                "value": "00000064"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+                "name": "SystemResponsiveness",
+                "value": "00000014"
+            }
+        ]
+    },
+    "Split Large Caches": {
+        "name": "Split Large Caches",
+        "description": "Splits large caches into smaller chunks reducing overall system latency.",
+        "category": "kernel",
+        "toggled": 0,
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "SplitLargeCaches",
+                "value": "00000001"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "SplitLargeCaches",
+                "value": "00000000"
+            }
+        ]
+    },
+    "NVME Optimization": {
+        "name": "Nvme Optimization",
+        "description": "Optimizations for nvme storage devices.",
+        "category": "kernel",
+        "toggled": 0,
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "QueueDepth",
+                "value": "64"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "NvmeMaxReadSplit",
+                "value": "4"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "NvmeMaxWriteSplit",
+                "value": "4"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "ForceFlush",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "ImmediateData",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "MaxSegmentsPerCommand",
+                "value": "256"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "MaxOutstandingCmds",
+                "value": "256"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "ForceEagerWrites",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "MaxQueuedCommands",
+                "value": "256"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "MaxOutstandingIORequests",
+                "value": "256"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "NumberOfRequests",
+                "value": "1500"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "IoSubmissionQueueCount",
+                "value": "3"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "IoQueueDepth",
+                "value": "64"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "HostMemoryBufferBytes",
+                "value": "1500"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "ArbitrationBurst",
+                "value": "256"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "QueueDepth",
+                "value": "64"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "NvmeMaxReadSplit",
+                "value": "4"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "NvmeMaxWriteSplit",
+                "value": "4"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "ForceFlush",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "ImmediateData",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "MaxSegmentsPerCommand",
+                "value": "256"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "MaxOutstandingCmds",
+                "value": "256"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "ForceEagerWrites",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "MaxQueuedCommands",
+                "value": "256"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "MaxOutstandingIORequests",
+                "value": "256"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "NumberOfRequests",
+                "value": "1500"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "IoSubmissionQueueCount",
+                "value": "3"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "IoQueueDepth",
+                "value": "64"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "HostMemoryBufferBytes",
+                "value": "1500"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "ArbitrationBurst",
+                "value": "256"
+            }
+        ],
+        "revert": [
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "QueueDepth",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "NvmeMaxReadSplit",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "NvmeMaxWriteSplit",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "ForceFlush",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "ImmediateData",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "MaxSegmentsPerCommand",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "MaxOutstandingCmds",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "ForceEagerWrites",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "MaxQueuedCommands",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "MaxOutstandingIORequests",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "NumberOfRequests",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "IoSubmissionQueueCount",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "IoQueueDepth",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "HostMemoryBufferBytes",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\stornvme\\Parameters",
+                "name": "ArbitrationBurst",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "StorNVMeAllowZeroLatency",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "QueueDepth",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "NvmeMaxReadSplit",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "NvmeMaxWriteSplit",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "ForceFlush",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "ImmediateData",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "MaxSegmentsPerCommand",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "MaxOutstandingCmds",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "ForceEagerWrites",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "MaxQueuedCommands",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "MaxOutstandingIORequests",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "NumberOfRequests",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "IoSubmissionQueueCount",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "IoQueueDepth",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "HostMemoryBufferBytes",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\StorNVMe\\Parameters\\Device",
+                "name": "ArbitrationBurst",
+                "value": null
+            }
+        ]
+    },
+    "Network Throttling": {
+        "name": "Network Throttling",
+        "description": "Enables network throttling, optimizing network stability and speed.",
+        "category": "network",
+        "toggled": 0,
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+                "name": "NetworkThrottlingIndex",
+                "value": "0000000a"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+                "name": "NetworkThrottlingIndex",
+                "value": "ffffffff"
+            }
+        ]
+    },
+    "General Kernel Tweaks": {
+        "name": "General Kernel Tweaks",
+        "description": "Bunch of kernel optimizations, optimizing kernel speeds.",
+        "category": "kernel",
+        "toggled": 0,
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "MaxDynamicTickDuration",
+                "value": "10"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "MaximumSharedReadyQueueSize",
+                "value": "128"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "BufferSize",
+                "value": "32"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "IoQueueWorkItem",
+                "value": "32"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "IoQueueWorkItemToNode",
+                "value": "32"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "IoQueueWorkItemEx",
+                "value": "32"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "IoQueueThreadIrp",
+                "value": "32"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "ExTryQueueWorkItem",
+                "value": "32"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "ExQueueWorkItem",
+                "value": "32"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "IoEnqueueIrp",
+                "value": "32"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "XMMIZeroingEnable",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "UseNormalStack",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "UseNewEaBuffering",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "StackSubSystemStackSize",
+                "value": "65536"
+            }
+        ],
+        "revert": [
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "MaxDynamicTickDuration",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "MaximumSharedReadyQueueSize",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "BufferSize",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "IoQueueWorkItem",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "IoQueueWorkItemToNode",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "IoQueueWorkItemEx",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "IoQueueThreadIrp",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "ExTryQueueWorkItem",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "ExQueueWorkItem",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "IoEnqueueIrp",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "XMMIZeroingEnable",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "UseNormalStack",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "UseNewEaBuffering",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "StackSubSystemStackSize",
+                "value": null
+            }
+        ]
+    },
+    "DPC Optimizations": {
+        "name": "DPC Optimizations",
+        "description": "Optimized the dpc  (Deferred Process Call) scheduler.",
+        "category": "kernel",
+        "toggled": 0,
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "DpcWatchdogProfileOffset",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "DpcTimeout",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "IdealDpcRate",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "MaximumDpcQueueDepth",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "MinimumDpcRate",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "DpcWatchdogPeriod",
+                "value": "0"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "DpcWatchdogProfileOffset",
+                "value": "10000"
+            },
+            {
+                "function": "delete",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "DpcTimeout",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "IdealDpcRate",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "MaximumDpcQueueDepth",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "MinimumDpcRate",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "DpcWatchdogPeriod",
+                "value": null
+            }
+        ]
+    },
+    "Disable MMCSS": {
+        "name": "Disable MMCSS",
+        "description": "Disabling the multimedia class scheduler service can improve performance for (some) applications by disabling the priority set by MMCSS.",
+        "category": "kernel",
+        "toggled": 0,
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\MMCSS",
+                "name": "Start",
+                "value": "00000004"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\MMCSS",
+                "name": "Start",
+                "value": "00000002"
+            }
+        ]
+    },
+    "Enable Lazy Mode": {
+        "name": "Enable Lazy Mode",
+        "description": "Enables a lazy mode for the MMCSS scheduler. Reducing interrupts and system responsiveness.",
+        "category": "kernel",
+        "toggled": 0,
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Services\\MMCSS",
+                "name": "Start",
+                "value": "00000002"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+                "name": "LazyMode",
+                "value": "0"
             }
         ]
     }

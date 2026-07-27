@@ -17,12 +17,14 @@ class MainWindow(QMainWindow):
 
 		tweaksMenu = menubar.addMenu("Settings")
 		tweakViewAction = menubar.addAction("Show Tweaks")
+		addTweakActionMenu = menubar.addAction("Add Tweak")
 		openJsonAction = tweaksMenu.addAction("Open File")	
 		addTweakAction= tweaksMenu.addAction("Add Tweak")	
 
 		openJsonAction.triggered.connect(self.parseFile)
 		addTweakAction.triggered.connect(self.showAddPage)	
 		tweakViewAction.triggered.connect(self.parseFile)	
+		addTweakActionMenu.triggered.connect(self.showAddPage)
 		pageContents= QWidget()
 		self.setCentralWidget(pageContents)
 
@@ -228,8 +230,17 @@ class MainWindow(QMainWindow):
 	def get_file_contents(self, filepath: str):
 		try:
 			if '.reg' in filepath:
-				with open(filepath, "r") as file:
-					return file.read()
+				try:
+					with open(filepath, "r", encoding="utf-8") as file:
+						return file.read()
+				except UnicodeDecodeError:
+					print("UTF-8 Failed")
+
+				try:
+					with open(filepath, "r", encoding="utf-16") as file:
+						return file.read()
+				except UnicodeDecodeError:
+					print("UTF-16 Failed")
 
 			elif '.bat' in filepath:
 				with open(filepath, "r", encoding="utf-8") as file:
