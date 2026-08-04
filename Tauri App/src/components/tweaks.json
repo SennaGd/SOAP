@@ -1,9 +1,9 @@
 {
     "Distribute Timers": {
         "name": "Distribute Timers",
+		"status":"recommended",
         "description": "Changes priorization of the process timers.",
         "category": "kernel",
-        "toggled": 0,
         "apply": [
             {
                 "function": "add",
@@ -25,9 +25,9 @@
     },
     "KeyboardDataQueueSize": {
         "name": "KeyboardDataQueueSize",
+		"status":"recommended",
         "description": "reducing the keyboard events buffered by the keyboard driver, resulting in reducing latency.",
         "category": "input",
-        "toggled": 1,
         "apply": [
             {
                 "function": "add",
@@ -49,9 +49,9 @@
     },
     "MouseDataQueueSize": {
         "name": "MouseDataQueueSize",
+		"status":"recommended",
         "description": "Reducing mouse events buffered by the mouse it's driver, resulting in reduced latency.",
         "category": "input",
-        "toggled": 0,
         "apply": [
             {
                 "function": "add",
@@ -73,9 +73,9 @@
     },
     "Threaded DPC": {
         "name": "Threaded DPC",
+		"status":"recommended",
         "description": "Reduces the general DPC latency increasing system responsiveness by forcing all DPC's to run asynchronously.",
         "category": "kernel",
-        "toggled": 0,
         "apply": [
             {
                 "function": "add",
@@ -97,9 +97,9 @@
     },
     "System Responsiveness": {
         "name": "System Responsiveness",
+		"status":"recommended",
         "description": "Reduces the amound of cpu usage reserved for background tasks, resulting in less interrupts and smoother frametimes.",
         "category": "kernel",
-        "toggled": 0,
         "apply": [
             {
                 "function": "add",
@@ -121,9 +121,9 @@
     },
     "Split Large Caches": {
         "name": "Split Large Caches",
+		"status":"recommended",
         "description": "Splits large caches into smaller chunks reducing overall system latency.",
         "category": "kernel",
-        "toggled": 0,
         "apply": [
             {
                 "function": "add",
@@ -145,9 +145,9 @@
     },
     "NVME Optimization": {
         "name": "Nvme Optimization",
+		"status":"recommended",
         "description": "Optimizations for nvme storage devices.",
         "category": "kernel",
-        "toggled": 0,
         "apply": [
             {
                 "function": "add",
@@ -582,9 +582,9 @@
     },
     "Network Throttling": {
         "name": "Network Throttling",
+		"status":"recommended",
         "description": "Enables network throttling, optimizing network stability and speed.",
-        "category": "network",
-        "toggled": 0,
+        "category": "cpu",
         "apply": [
             {
                 "function": "add",
@@ -606,9 +606,9 @@
     },
     "General Kernel Tweaks": {
         "name": "General Kernel Tweaks",
+		"status":"recommended",
         "description": "Bunch of kernel optimizations, optimizing kernel speeds.",
         "category": "kernel",
-        "toggled": 0,
         "apply": [
             {
                 "function": "add",
@@ -812,9 +812,9 @@
     },
     "DPC Optimizations": {
         "name": "DPC Optimizations",
+		"status":"recommended",
         "description": "Optimized the dpc  (Deferred Process Call) scheduler.",
         "category": "kernel",
-        "toggled": 0,
         "apply": [
             {
                 "function": "add",
@@ -906,9 +906,9 @@
     },
     "Disable MMCSS": {
         "name": "Disable MMCSS",
+		"status":"recommended",
         "description": "Disabling the multimedia class scheduler service can improve performance for (some) applications by disabling the priority set by MMCSS.",
         "category": "kernel",
-        "toggled": 0,
         "apply": [
             {
                 "function": "add",
@@ -930,9 +930,9 @@
     },
     "Enable Lazy Mode": {
         "name": "Enable Lazy Mode",
+		"status":"recommended",
         "description": "Enables a lazy mode for the MMCSS scheduler. Reducing interrupts and system responsiveness.",
         "category": "kernel",
-        "toggled": 0,
         "apply": [
             {
                 "function": "add",
@@ -949,6 +949,834 @@
                 "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
                 "name": "LazyMode",
                 "value": "0"
+            }
+        ]
+    },
+    "Lazymode Timeout Tweak": {
+        "name": "Lazymode timeout tweak",
+		"status":"recommended",
+        "description": "This tweak can improve latency and stability, however it can occur that this tweak can cause stutters and instabilities. It modified the MMCSS cycle suspension between idle time periods.",
+        "category": "kernel",
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+                "name": "LazyModeTimeout",
+                "value": "25000"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+                "name": "LazyModeTimeout",
+                "value": "0"
+            }
+        ]
+    },
+    "Enable Lazymode": {
+        "name": "Enable Lazymode",
+		"status":"recommended",
+        "description": "Enabled a lazy mode for the MMCSS scheduler.",
+        "category": "kernel",
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+                "name": "LazyMode",
+                "value": "1"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+                "name": "LazyMode",
+                "value": "0"
+            }
+        ]
+    },
+    "Disable MMSCC Always On": {
+        "name": "Disable MMSCC Always On",
+		"status":"recommended",
+        "description": "Stops forcing MMCSS to be always on. This could improve stability, however it can also cause stuttering and unstable frametimes.",
+        "category": "kernel",
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+                "name": "AlwaysOn",
+                "value": "0"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+                "name": "LazyMode",
+                "value": "0"
+            }
+        ]
+    },
+    "Disable Interrupt Steering": {
+        "name": "Disable Interrupt Steering",
+		"status":"recommended",
+        "description": "Disables the dynamic distribution of IRQ requests across cores. It forces each hardware device's interrupts to remain on its specifically assigned cores rather than letting Windows shift them around",
+        "category": "input",
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "InterruptSteeringDisabled",
+                "value": "00000001"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "InterruptSteeringDisabled",
+                "value": "00000000"
+            }
+        ]
+    },
+    "Disable Distribute Timers": {
+        "name": "Disable Distribute Timers",
+		"status":"recommended",
+        "description": "Disables the distribution of DPC's across multiple cores, disabling this will improve system latency and stability except when working with heavy multithreaded programs.",
+        "category": "kernel",
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "DistributeTimers",
+                "value": "00000000"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "DistributeTimers",
+                "value": "00000001"
+            }
+        ]
+    },
+    "Disable NFTS Tunneling": {
+        "name": "Disable NFTS Tunneling",
+		"status":"recommended",
+        "description": "Disables saving of temporary caches of programs, reducing overall interrupts.",
+        "category": "kernel",
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "DistributeTimers",
+                "value": "00000001"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+                "name": "DistributeTimers",
+                "value": "00000000"
+            }
+        ]
+    },
+    "Disable Event Processor": {
+        "name": "Disable Event Processor",
+		"status":"recommended",
+        "description": "Disabling the event processor will disable windows it's power saving feature on the cpu. This will reduce overall latency.",
+        "category": "cpu",
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Power",
+                "name": "EventProcessorEnabled",
+                "value": "00000000"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SYSTEM\\CurrentControlSet\\Control\\Power",
+                "name": "EventProcessorEnabled",
+                "value": "00000001"
+            }
+        ]
+    },
+    "DWM Flip Present  ": {
+        "name": "DWM Flip Present  ",
+		"status":"experimental",
+        "description": "Cuts 1-2 frames of processing delay added by DWM composition and reduces overall input latency.",
+        "category": "cpu",
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKEY_LOCAL_MACHINE",
+                "path": "SOFTWARE\\Microsoft\\Windows\\DWM",
+                "name": "FrameLatency",
+                "value": "00000002"
+            }
+        ],
+        "revert": [
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "FrameLatency",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "ForceDirectDrawSync",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "MaxQueuedPresentBuffers",
+                "value": null
+            }
+        ]
+    },
+    "DWM Immediate render": {
+        "name": "DWM Immediate render",
+		"status":"experimental",
+        "description": "Sets renderings to near zero milliseconds, removes visual processing and forces FIFO frame delivery. Though this tweak is quite risky and could freeze your system. Tweak made by Kizzmo.",
+        "category": "cpu",
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "UseHWDrawListEntriesOnWARP",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "ResampleModeOverride",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "ParallelModePolicy",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableResizeOptimization",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableMegaRects",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableFrontBufferRenderChecks",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableEffectCaching",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableDesktopOverlays",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnablePrimitiveReordering",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "MaxD3DFeatureLevel",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "OverlayQualifyCount",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "OverlayDisqualifyCount",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "ResizeTimeoutModern",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "ResizeTimeoutGdi",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableResizeOptimization",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableEffectCaching",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "HighColor",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableDeviceBitmaps",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableCpuClipping",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableDrawListCaching",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "AnimationsShiftKey",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "AnimationAttributionEnabled",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableCommonSuperSets",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableAdvancedDirectFlip",
+                "value": "1"
+            }
+        ],
+        "revert": [
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "AnimationAttributionEnabled",
+                "value": "1"
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "UseHWDrawListEntriesOnWARP",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "ResampleModeOverride",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "ParallelModePolicy",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableResizeOptimization",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableMegaRects",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableFrontBufferRenderChecks",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableEffectCaching",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableDesktopOverlays",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnablePrimitiveReordering",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "MaxD3DFeatureLevel",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "OverlayQualifyCount",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "OverlayDisqualifyCount",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "ResizeTimeoutModern",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "ResizeTimeoutGdi",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableResizeOptimization",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableEffectCaching",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "HighColor",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableDeviceBitmaps",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableCpuClipping",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableDrawListCaching",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "AnimationsShiftKey",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableCommonSuperSets",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableAdvancedDirectFlip",
+                "value": null
+            }
+        ]
+    },
+    "DWM Adjustables ": {
+        "name": "DWM Adjustables ",
+		"status":"recommended",	
+        "description": "Optimized DWM's VRAM and GPU usage. Made by Jdallmann",
+        "category": "cpu",
+        "apply": [
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "SuperWetEnabled",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "SDRBoostPercentOverride",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "ResampleInLinearSpace",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "OneCoreNoDWMRawGameController",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "MPCInputRouterWaitForDebugger",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "InteractionOutputPredictionDisabled",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "InkGPUAccelOverrideVendorWhitelist",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableRenderPathTestMode",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "FlattenVirtualSurfaceEffectInput",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableCpuClipping",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisallowNonDrawListRendering",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableProjectedShadowsRendering",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableProjectedShadows",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableLockingMemory",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableHologramCompositor",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableDeviceBitmaps",
+                "value": "1"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DebugFailFast",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DDisplayTestMode",
+                "value": "0"
+            },
+            {
+                "function": "add",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableLockingMemory",
+                "value": "1"
+            }
+        ],
+        "revert": [
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "SuperWetEnabled",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "SDRBoostPercentOverride",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "ResampleInLinearSpace",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "OneCoreNoDWMRawGameController",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "MPCInputRouterWaitForDebugger",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "InteractionOutputPredictionDisabled",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "InkGPUAccelOverrideVendorWhitelist",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableRenderPathTestMode",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "FlattenVirtualSurfaceEffectInput",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "EnableCpuClipping",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisallowNonDrawListRendering",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableProjectedShadowsRendering",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableProjectedShadows",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableLockingMemory",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableHologramCompositor",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableDeviceBitmaps",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DebugFailFast",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DDisplayTestMode",
+                "value": null
+            },
+            {
+                "function": "delete",
+                "hive": "HKLM",
+                "path": "SOFTWARE\\Microsoft\\WINDOWS\\DWM",
+                "name": "DisableLockingMemory",
+                "value": null
             }
         ]
     }

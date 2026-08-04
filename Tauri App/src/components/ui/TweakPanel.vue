@@ -7,6 +7,8 @@ import { load } from '@tauri-apps/plugin-store'
 const props = defineProps({
   title: {type: String, required: true},
   description: {type: String},
+  
+  tweak_status: {type: String},
   tweak: {type: Object}
 })
 
@@ -85,10 +87,12 @@ const toggleTweak = computed(() => {
 	<div class='tweak-panel'>
 		<div class='panel-container'>
 			<h2>{{ title }}</h2>
-			<p>{{ description }}</p>
 			<label for='checkbox'>{{toggleTweak}}</label>	
 		</div>	
-		
+		<div class="status">{{ tweak_status }}</div>
+		<div class='description'>	
+			<p>{{ description }}</p>
+		</div>
 		<div class='button-container'>
 			<label class="switch">
 				<input  type="checkbox" v-model="isChecked" @change="handleToggle">

@@ -45,7 +45,7 @@ function getValue(event: Event) {
 	<Sidebar navTitle='SOAP'/>	
 
     <div class="contents">
-      <RouterView class=''/>
+		<RouterView class='router-view'/>
     </div>
 
     <!-- <label>

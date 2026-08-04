@@ -27,12 +27,6 @@ const props = defineProps({
 			<RouterLink class='' to="/tweaks/kernel"> 
 				<div class='nav-text'>Kernel</div>
 			</RouterLink>	
-			<RouterLink class='' to="/tweaks/network"> 
-				<div class='nav-text'>Network</div>
-			</RouterLink>	
-			<RouterLink class='' to="/tweaks/audio"> 
-				<div class='nav-text'>Audio</div>
-			</RouterLink>
 		</div>
 	</div>
 </template>

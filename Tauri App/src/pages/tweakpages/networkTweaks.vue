@@ -13,6 +13,7 @@ const sortedTweaks = sortTweaksOnCategory(data, "network")
 			<TweakPanel 
 				:title=tweak.name 
 				:description=tweak.description 
+				:tweak_status=tweak.status
 				:tweak=tweak
 			/>
 		</div>
