@@ -12,6 +12,5 @@ import PageContainer from "../components/ui/PageContainer.vue"
 	</HeaderFrame>
 
 	<PageContainer>
-	
 	</PageContainer>
 </template>

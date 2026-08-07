@@ -15,12 +15,12 @@ import PageContainer from "../components/ui/PageContainer.vue"
 			<div class='big-box box'></div>
 				<div class='box-container'>
 				<div class='small-box box'>
-					<p class='sm-sub-title'>Check out</p>
+					<p class='sm-sub-title m-margin'>Check out</p>
 					<h2 class='sm-title'>Tweaks</h2>
 					<RouterLink to='/tweaks' class='sm-button'><p>→</p></RouterLink>
 				</div>
 				<div class='small-box box'>
-					<p class='sm-sub-title'>Download</p>
+					<p class='sm-sub-title m-margin'>Download</p>
 					<h2 class='sm-title'>Applications</h2>
 					<RouterLink to='/applications' class='sm-button'><p>→</p></RouterLink>
 				</div>

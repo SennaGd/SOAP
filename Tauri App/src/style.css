@@ -65,6 +65,10 @@
 }
 
 .big-box{
+	display: flex;
+	flex-direction: column;
+	padding-top: 3rem;
+	align-items: center;
 	width: 850px;
 	height: 250px;
 }
@@ -88,8 +92,16 @@
 .sm-sub-title {
 	color: var(--sm-sub);
 
-	margin-top: 40px;
+/*	margin-top: 40px;*/
 	font-size: 1.25rem; 
+}
+
+.sm-margin {
+	margin-top: 1rem;
+}
+
+.m-margin {
+	margin-top: 2.5rem;
 }
 
 .sm-button {
@@ -129,10 +141,10 @@
 	align-items: center;
 	padding-left: 10vw;
 	padding-right: 10vw;
+	margin-top: 5rem;
 }
 
 .tweak-panel {
-
 	margin-left: auto;
 	margin-right: auto;
 	width: clamp(500px, 25vw, 40vw);
@@ -200,3 +212,18 @@
 	padding-bottom: 16px;
 }
 
+.row-container {
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
+}
+
+.sm-text {
+	font-size: 1.25rem;
+}
+
+.sm-text p {
+	margin-top: 16px;
+	justify-content: center;
+	align-items: center;
+}
