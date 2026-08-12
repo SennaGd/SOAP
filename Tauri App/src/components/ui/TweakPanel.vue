@@ -16,6 +16,7 @@ const { tweak } = toRefs(props)
 const tweakObj = Object.values(tweak)
 
 const isChecked = ref(false)
+var category = ref("box-primary")
 const componentId = tweakObj[0].tweak.name 
 
 let store = null
@@ -78,21 +79,26 @@ const toggleTweak = computed(() => {
 	applyTweaks() : revertTweaks()
 })
 
+switch (tweakObj[0].tweak.status) {
+	case "experimental":
+		category = ref("box-error")
+	case "warning":
+		category = ref("box-warning")
+}
 </script>
 
 
 <template>
 
 	<!-- One Tweak -->
-	<div class='tweak-panel'>
-		<div class='panel-container'>
-			<h2>{{ title }}</h2>
-			<label for='checkbox'>{{toggleTweak}}</label>	
-		</div>	
-		<div class="status">{{ tweak_status }}</div>
+	<div class='box tweak-panel'>
+		<h2 class='title-text'>{{ title }}</h2>
+		<label for='checkbox'>{{toggleTweak}}</label>	
+		<div class="status category-box " :class="[category]"></div>
 		<div class='description'>	
 			<p>{{ description }}</p>
 		</div>
+
 		<div class='button-container'>
 			<label class="switch">
 				<input  type="checkbox" v-model="isChecked" @change="handleToggle">
@@ -100,7 +106,37 @@ const toggleTweak = computed(() => {
 			</label>
 		</div>
 	</div>	
-
-
-
+	
 </template>
+<script>
+
+	
+
+</script>
+<style>
+	.tweak-panel {
+		display: grid;
+		grid-template-rows: 50px 100px 50px;
+
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		height: 250px;
+	}
+	
+	.description {
+		grid-row: 2;
+		grid-column: 1;
+	}
+	.status {
+		margin-left:auto;
+		margin-bottom:auto;
+		grid-row: 1;
+		grid-column: 2;
+	}
+	.button-container {
+		margin-left:auto;
+		  align-self: end;
+		grid-row: 3;
+		grid-column: 2;
+	}
+</style>

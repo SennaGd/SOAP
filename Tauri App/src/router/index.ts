@@ -11,8 +11,6 @@ import {
 	KernelTweaks,
 	CPUTweaks,
 	GPUTweaks,
-	NetworkTweaks,
-	AudioTweaks
 
 } from "../pages"
 
@@ -24,8 +22,8 @@ const routes = [
  { path: "/tweaks/gpu", component: GPUTweaks},
  { path: "/tweaks/cpu", component: CPUTweaks},
  { path: "/tweaks/kernel", component: KernelTweaks},
- { path: "/tweaks/network", component: NetworkTweaks},
- { path: "/tweaks/audio", component: AudioTweaks},
+// { path: "/tweaks/network", component: NetworkTweaks},
+// { path: "/tweaks/audio", component: AudioTweaks},
  
  { path: "/privacy", component: PrivacyView },
  { path: "/apps", component: AppView },

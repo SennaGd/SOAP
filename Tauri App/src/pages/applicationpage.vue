@@ -13,7 +13,7 @@ import CategoryContainer from "../components/ui/CategoryContainer.vue"
 
 	<PageContainer>
 			<div class='big-box box'>
-				<h2 class='sm-title'>Applications are currently not working..</h2>
+				<h2 class='sm-title'>Applications are currently not working</h2>
 				<p class='sm-sub-title sm-margin'>Check out the Tweak or Automation page.</p>
 				<div class='row-container m-margin'>
 					<RouterLink to='/tweaks' class='sm-button sm-text'> 

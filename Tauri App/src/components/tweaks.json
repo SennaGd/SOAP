@@ -1121,7 +1121,7 @@
         ]
     },
     "DWM Flip Present  ": {
-        "name": "DWM Flip Present  ",
+        "name": "DWM Flip Present",
 		"status":"experimental",
         "description": "Cuts 1-2 frames of processing delay added by DWM composition and reduces overall input latency.",
         "category": "cpu",
@@ -1160,7 +1160,7 @@
     },
     "DWM Immediate render": {
         "name": "DWM Immediate render",
-		"status":"experimental",
+		"status":"warning",
         "description": "Sets renderings to near zero milliseconds, removes visual processing and forces FIFO frame delivery. Though this tweak is quite risky and could freeze your system. Tweak made by Kizzmo.",
         "category": "cpu",
         "apply": [

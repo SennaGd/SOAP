@@ -1,51 +1,30 @@
 :root {
 	/* Global Variables */
-	--bg-base: hsl(0, 0%, 8%); /* Same as Sidebar*/
-	--bg-page: hsl(0, 0%, 5%); /* Main Page */
+	--bg-base: hsl(0, 0%, 6%); 
+	--bg-page: hsl(0, 0%, 0%); 
+	--bg-box: hsl(0, 0%, 2%);
 
-	--border: hsl(0, 0%, 15%);
-
+	--border:  hsl(0, 0%, 25%);
 	
-	/* Sidebar Variables */
-	--bg-sidebar: var(--bg-base); 
+	--header-button: hsl(0, 0%, 5%);
 	
-	/* Dropdown Variables */
-	--bg-dropdown: hsl(0, 0%, 10%);
-
-	/* Box Variables */	
-	--bg-box: hsl(0, 0%, 7%);
-	
-	--bg-sm-button: hsl(0, 0%, 9%);
-	--border-sm-button: hsl(0, 0%, 20%);
-	--bg-sm-button-hover: hsl(0, 0%, 12%);
-
+	--sidebar-active: hsl(0, 0%, 10%);
 
 	/* Text Variables */
-	--sm-title: hsl(120, 60%, 70%);
-	--sm-sub: hsl(0, 0%, 60%);
-
-	--text-active: hsl(0, 0%, 95%);
-	--text-mashed: hsl(0, 0%, 75%);
-	--text-title: hsl(120, 60%, 75%);
+	--text-active:	 hsl(0, 0%, 95%);
+	--text-inactive: hsl(0, 0%, 50%);
+	--text-hover:    hsl(0, 0%, 75%);
 
 
-	/* Button Variables */	
-	--bg-sidebar-button: hsl(0, 0%, 12%);	
-	--bg-sidebar-button-active: hsl(0, 0%, 18%);
-	--bg-sidebar-button-hover: hsl(0, 0%, 15%);
-	
-	--bg-slider-button: hsl(0, 0%, 10%);
-	--bg-slider-button-active: hsl(0, 0%, 15%);
-
-	--bg-slider-button-border: hsl(0, 0%, 50%);
-	
-	--bg-link-button: hsl(120, 40%, 55%);
-
-	--width: 1000px;
+	/* Colored Variables */
+	--color-primary: hsl(145, 100%, 60%); /* primary */
+	--color-warning: hsl(45, 100%, 60%); /* orange  */
+	--color-error:	 hsl(356, 100%, 60%);  /* red     */
 }
 
 
 :root {
-	color: var(--text-mashed);
+	color: var(--text-inactive);
 }
+
 *::selection { background: transparent; } 

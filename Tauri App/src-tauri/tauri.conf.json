@@ -12,9 +12,11 @@
   "app": {
     "windows": [
       {
-        "title": "soap-tauri",
-        "width": 800,
-        "height": 600
+        "title": "SOAP",
+        "width": 1280,
+        "height": 720,
+		"minWidth": 960,
+		"minHeight": 540
       }
     ],
     "security": {

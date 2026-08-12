@@ -1,7 +1,6 @@
 <script setup>
 	import { ref } from 'vue';
 	import NavButton from "./NavButton.vue";
-	import DropdownButton from "./DropdownButton.vue"
 	const isEnabled = ref(false);
 
 	defineProps({
@@ -27,7 +26,7 @@
 
 		<div class='nav-button-group'>
 			<NavButton title='Home' to='/' icon='home.svg'/>
-			<DropdownButton title='Tweaks' to='/tweaks' icon='list.svg'/>
+			<NavButton title='Tweaks' to='/tweaks' icon='list.svg'/>
 			<NavButton title='Applications' to='/apps' icon='box.svg'/>
 		</div>
 

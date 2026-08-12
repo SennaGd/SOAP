@@ -2,6 +2,7 @@
 @import "./palette.css";
 @import "./sidebar.css";
 @import "./sliderbutton.css";
+
 .base {
 	background-color: var(--bg-base);
 
@@ -24,206 +25,87 @@
 
 }
 
-.sidebar> *:last-child {
+.sidebar > *:last-child {
 	margin-top: auto;	
 	margin-bottom: 1.5rem;
 }
 
 .contents {
-
-	padding: 40px;
 	background-color: var(--bg-page);
+	margin:16px;
 	display: block;
 	flex: 1;
 	
 	border: 1px solid var(--border);
-	border-radius: 32px;
+	border-radius: 1rem ;
+
 	overflow: auto;
 	-ms-overflow-style: none;
-	scrollbar-width: none; 
 }
 
 .contents::-webkit-scrollbar{
-	width:0px;
-	height: 0px;
+}
+
+.title-text{
+	gap: 8px;
+	font-size: 24px;
+	font-family: inter;
+	font-weight: 500;
+	line-height: 32px;
+	color: var(--text-active);
 }
 
 
-
-.box-container {
-	display: flex;
-	gap:50px;
-	width: 850px;
+.sub-text {
+	font-size: 14px;
+	font-family: inter;
+	padding:10px 0px;
 }
 
-.box {
-	background-color: var(--bg-box);
-	border: 1px solid var(--border);
-
-	border-radius: 16px;
-	margin-top: 20px;	
+.color-text {
+	font-size: 14px;
+	font-style:oblique;
 }
 
-.big-box{
-	display: flex;
-	flex-direction: column;
-	padding-top: 3rem;
-	align-items: center;
-	width: 850px;
-	height: 250px;
+.color-start {
+	padding-top: 50px;
 }
 
-.small-box {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 10px;
-	width: 400px;
-	height: 250px;
+/* color classes | highlighting text*/
+.primary {
+	color: var(--color-primary);
+}
+.warning {
+	color: var(--color-warning);
 }
 
-.sm-title {
-	color: var(--sm-title);
-
-	font-size: 2.25rem;
-	font-weight: 550;
+.error {
+	color: var(--color-error);
 }
 
-.sm-sub-title {
-	color: var(--sm-sub);
-
-/*	margin-top: 40px;*/
-	font-size: 1.25rem; 
+.box-primary {
+	background-color: var(--color-primary);
 }
 
-.sm-margin {
-	margin-top: 1rem;
+.box-warning {
+	background-color: var(--color-warning);
 }
 
-.m-margin {
-	margin-top: 2.5rem;
+.box-error {
+	background-color: var(--color-error);
 }
 
-.sm-button {
-	background-color: var(--bg-sm-button);
-	border: 1px solid var(--border-sm-button);
-
-	width: 160px;
-	height: 60px;
+.category-box {
+	width: 2rem;
+	height: 2rem;
 	border-radius: 8px;
-
-	display: flex;
-	font-size: 3rem;
-
-	padding-bottom:15px;
-
-	margin-top: auto;
-	margin-bottom: 30px;
-
 }
 
-.sm-button * {
-	margin:auto;
-
-}
-
-.sm-button:hover {
-	background-color: var(--bg-sm-button-hover);
-}
-
-.tweak-container {
+.tweak-grid {
 	display: grid;
-	grid-template-columns: 
-		repeat(auto-fill, minmax(clamp(100%/3 + 0.1%,(var(--width) - 100%)*1000,100%/2 + 0.1%),1fr))
-	; 
-	justify-content: center;
-	grid-gap: 16px;
-	align-items: center;
-	padding-left: 10vw;
-	padding-right: 10vw;
-	margin-top: 5rem;
-}
 
-.tweak-panel {
-	margin-left: auto;
-	margin-right: auto;
-	width: clamp(500px, 25vw, 40vw);
-	height: clamp(150px, 200px, 225px);
-	display: grid;
-	grid-template-rows: 1fr 5fr;
-	grid-template-columns: 3fr 1fr;
-	background-color: var(--bg-box);
-	border-radius: 16px;
-	overflow:hidden;
-	border: 1px solid var(--border);
-}
+	gap: 16px;
 
-.panel-container {
-	padding-left: 16px;	
-	max-height: 70px;
-	overflow: hidden;
-	padding-top: 16px;
-	grid-row:1;
-	grid-column:1;
-}
-
-.panel-container h2 {
-	margin-top: auto;
-	color: var(--sm-title);
-	font-size: 1.5rem;
-	padding-bottom: 5px;
-	font-weight: bold;
-	padding-bottom: 0.5rem;
-}
-
-.description {
-	font-size: 1rem;
-	padding-left:16px;
-	grid-row:2;
-	grid-column: 1;
-}
-
-.status {
-	margin-left:auto;
-	margin-bottom:auto;
-	margin-top: 16px;
-	margin-right: 16px;
-	color: var(--text-mashed);
-	font-size: 1rem;
-	font-weight: lighter;
-	background-color: var(--bg-sm-button);
-	border: 1px solid var(--border-sm-button);
-	border-radius: 8px;
-	padding:5px;
-	grid-row:1;
-	grid-column: 2;
-
-}
-.panel-container p {
-	color: var(--text-mashed);
-}
-
-.button-container {
-	grid-row:2;
-	grid-column:2;
-	margin-left: auto;
-	margin-top: auto;
-	padding-right: 16px;
-	padding-bottom: 16px;
-}
-
-.row-container {
-	display: flex;
-	flex-direction: row;
-	gap: 2rem;
-}
-
-.sm-text {
-	font-size: 1.25rem;
-}
-
-.sm-text p {
-	margin-top: 16px;
-	justify-content: center;
-	align-items: center;
+	grid-template-rows: 250px;
+	grid-template-columns: repeat(auto-fit, minmax(426px, 1fr));
 }
