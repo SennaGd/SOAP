@@ -43,13 +43,13 @@ function applyTweaks() {
 	for (var x = 0; x < tweakObj[0].tweak.apply.length; x++) {
 		var current_tweak= tweakObj[0].tweak.apply[x] // x of many apply tweaks
 
-//		invoke("key_handler", {
-//			function: current_tweak.function,
-//			hive: current_tweak.hive,
-//			path: current_tweak.path,
-//			keyName: current_tweak.name,
-//			keyValue: current_tweak.value
-//		})
+		invoke("key_handler", {
+			function: current_tweak.function,
+			hive: current_tweak.hive,
+			path: current_tweak.path,
+			keyName: current_tweak.name,
+			keyValue: current_tweak.value
+		})
 
 		console.log("applied", componentId)
 	}
@@ -61,13 +61,13 @@ function revertTweaks() {
 	for (var x = 0; x < tweakObj[0].tweak.revert.length; x++) {
 		var current_tweak = tweakObj[0].tweak.revert[x] // x of many apply tweaks
 
-//		invoke("key_handler", {
-//			function: current_tweak.function,
-//			hive: current_tweak.hive,
-//			path: current_tweak.path,
-//			keyName: current_tweak.name,
-//			keyValue: current_tweak.value
-//		})
+		invoke("key_handler", {
+			function: current_tweak.function,
+			hive: current_tweak.hive,
+			path: current_tweak.path,
+			keyName: current_tweak.name,
+			keyValue: current_tweak.value
+		})
 
 
 		console.log("reverted", componentId);
@@ -82,9 +82,14 @@ const toggleTweak = computed(() => {
 switch (tweakObj[0].tweak.status) {
 	case "experimental":
 		category = ref("box-error")
+}
+
+switch (tweakObj[0].tweak.status) {
 	case "warning":
 		category = ref("box-warning")
 }
+
+
 </script>
 
 
@@ -116,14 +121,15 @@ switch (tweakObj[0].tweak.status) {
 <style>
 	.tweak-panel {
 		display: grid;
-		grid-template-rows: 50px 100px 50px;
+		grid-template-rows: 30px 120px 20px;
 
 		border: 1px solid var(--border);
 		border-radius: 8px;
-		height: 250px;
+		height: 222px;
 	}
 	
 	.description {
+		padding-right:52px;
 		grid-row: 2;
 		grid-column: 1;
 	}
@@ -135,7 +141,7 @@ switch (tweakObj[0].tweak.status) {
 	}
 	.button-container {
 		margin-left:auto;
-		  align-self: end;
+		align-self: end;
 		grid-row: 3;
 		grid-column: 2;
 	}

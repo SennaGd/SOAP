@@ -1,7 +1,7 @@
 :root {
 	/* Global Variables */
 	--bg-base: hsl(0, 0%, 6%); 
-	--bg-page: hsl(0, 0%, 0%); 
+	--bg-page: hsl(0, 0%, 1%); 
 	--bg-box: hsl(0, 0%, 2%);
 
 	--border:  hsl(0, 0%, 25%);

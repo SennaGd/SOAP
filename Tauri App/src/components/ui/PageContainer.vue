@@ -11,17 +11,23 @@
 
 <style>
 .page-container {
-	display: grid;
-
+	display: flex;
+	flex-direction: column;
 	padding-top: 32px;
+
+	padding-bottom: 32px;
 	grid-gap: 16px;
 
 	margin: 0 15%;
-	
-	grid-auto-rows: 200px;
-	grid-template-columns: repeat(auto-fit,minmax(clamp(100%/3 + 0.1%,(1600px - 100vw)*1000,100%),1fr));
 }
 
+.page-container .sm-box {
+	flex: 50%;
+}
+
+.page-container .big-box {
+	flex: 100%;
+}
 
 
 
