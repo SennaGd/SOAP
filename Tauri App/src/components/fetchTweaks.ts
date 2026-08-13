@@ -1,5 +1,6 @@
+import { Tweak } from "./dataclasses/tweakdataclasses.ts"
 export default function sortTweaksOnCategory(jsonObj, category: String) {
-	const tweaks = Object.values(jsonObj)
+	const tweaks: Tweak[] = Object.values(jsonObj)
 	const tweakCategoryMap = tweaks.map(tweak => tweak.category)
 
 	var sortedTweaks = [] // will hold all the tweaks based on category

@@ -1,5 +1,6 @@
 export type Tweak = {
   id: number
+  category: string
   tweak_function: number
   tweak_path: string
   tweak_key: string
