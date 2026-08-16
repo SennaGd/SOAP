@@ -27,7 +27,7 @@
 		<div class='nav-button-group'>
 			<NavButton title='Home' to='/' icon='home.svg'/>
 			<NavButton title='Tweaks' to='/tweaks/inputs' icon='list.svg'/>
-			<NavButton title='Applications' class='disabled' to='/apps' icon='box.svg'/>
+			<NavButton title='Apps' class='disabled' to='/apps' icon='box.svg'/>
 		</div>
 
 		<div class="nav-line"><hr/></div>

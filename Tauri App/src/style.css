@@ -16,7 +16,7 @@
 .sidebar {
 	background-color:var(--bg-sidebar); 
 
-	flex: 0 0 15rem;
+	flex: 0 0 12rem;
 	height: 100vh;
 
 	display: flex;
@@ -31,6 +31,9 @@
 }
 
 .contents {
+	scrollbar-color: var(--scrollbar-color) transparent;
+    scrollbar-width:thin;
+
 	background-color: var(--bg-page);
 	margin:16px;
 	display: block;
@@ -40,23 +43,24 @@
 	border-radius: 1rem ;
 
 	overflow: auto;
+	overflow-x: hidden;
 	-ms-overflow-style: none;
 }
 
 
+
 .title-text{
 	gap: 8px;
-	font-size: 22px;
-	font-family: inter;
+	font-size: 20px;
+	font-family: monospace;
 	font-weight: 600;
-	line-height: 32px;
 	color: var(--text-active);
 }
 
 
 .sub-text {
 	font-size: 14px;
-	font-family: inter;
+	font-family:monospace;
 	padding:4px 0px;
 }
 
@@ -104,9 +108,10 @@
 	gap: 16px;
 
 	grid-template-rows: 222px;
-	grid-template-columns: repeat(auto-fit, minmax(438px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(421px, 1fr));
 }
 
 .disabled {
+	text-decoration: line-through;
 	pointer-events: none;
 }

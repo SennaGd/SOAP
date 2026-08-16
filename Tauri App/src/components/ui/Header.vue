@@ -1,7 +1,7 @@
 <template>
 	<div class='header'>
-		<div class='header-button soapy-button'>This is so .. 
-			<div class="primary">Soapy</div>?
+		<div class='header-button soapy-button'>Welcome to: 
+			<div class="primary">SOAP</div>
 		</div>
 		
 		<slot class='header-button header-centered'>
@@ -9,7 +9,7 @@
 		</slot>
 
 		<div class='header-button soapy-version'>Version: 
-			<div class='primary'> 7.23.0</div> 
+			<div class='primary'> 7.23.1</div> 
 		</div>	
 	</div>
 </template>
@@ -41,7 +41,7 @@
 	}
 
 	.soapy-button {
-		min-width: 170px;
+		min-width: 160px;
 		margin-right:auto;
 		margin-left: 32px;
 		grid-column: 1;

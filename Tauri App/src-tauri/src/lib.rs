@@ -149,7 +149,7 @@ pub fn run() {
 		.plugin(tauri_plugin_store::Builder::default().build())
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_system_info::init())
-        .invoke_handler(tauri::generate_handler![])
+        .invoke_handler(tauri::generate_handler![key_handler])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

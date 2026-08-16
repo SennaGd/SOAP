@@ -121,8 +121,8 @@ switch (tweakObj[0].tweak.status) {
 <style>
 	.tweak-panel {
 		display: grid;
-		grid-template-rows: 30px 120px 20px;
-
+		line-height:normal;
+		grid-template-rows: 30px 140px;
 		border: 1px solid var(--border);
 		border-radius: 8px;
 		height: 222px;
@@ -132,6 +132,7 @@ switch (tweakObj[0].tweak.status) {
 		padding-right:52px;
 		grid-row: 2;
 		grid-column: 1;
+		font-size: 14px;
 	}
 	.status {
 		margin-left:auto;
@@ -140,9 +141,11 @@ switch (tweakObj[0].tweak.status) {
 		grid-column: 2;
 	}
 	.button-container {
+		position: bottom;
 		margin-left:auto;
+		margin-top:auto;
 		align-self: end;
-		grid-row: 3;
+		grid-row: 2;
 		grid-column: 2;
 	}
 </style>

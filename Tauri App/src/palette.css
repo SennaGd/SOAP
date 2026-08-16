@@ -9,7 +9,7 @@
 	--header-button: hsl(0, 0%, 5%);
 	
 	--sidebar-active: hsl(0, 0%, 10%);
-
+	--scrollbar-color: hsl(0, 0%, 25%);
 	/* Text Variables */
 	--text-active:	 hsl(0, 0%, 95%);
 	--text-inactive: hsl(0, 0%, 50%);
@@ -23,7 +23,9 @@
 }
 
 
+
 :root {
+	font-family: monospace;
 	color: var(--text-inactive);
 }
 

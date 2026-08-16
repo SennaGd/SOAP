@@ -18,7 +18,7 @@
 	padding-bottom: 32px;
 	grid-gap: 16px;
 
-	margin: 0 15%;
+	margin: 0 12%;
 }
 
 .page-container .sm-box {

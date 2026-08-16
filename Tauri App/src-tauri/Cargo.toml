@@ -26,6 +26,7 @@ tauri-plugin-fs = "2"
 tauri-plugin-store = "2.4.4"
 tauri-plugin-system-info = "2.0.9"
 winreg = "0.56.0"
+tauri-build = "2"
 
 [dependencies.windows-registry]
 version = "0.6"
